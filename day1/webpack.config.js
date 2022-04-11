@@ -18,5 +18,15 @@ module.exports = {
         open: true,
         host: '127.0.0.1',
         port: 80
+    },
+    module: {
+        rules: [
+            // 定义了不同模块对应的 loader
+            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+            // 处理 .less 文件的 loader
+            { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] },
+            { test: /\.jgp|png|gif$/, use: 'url-loader?limit=22222222' }
+
+        ]
     }
 }
