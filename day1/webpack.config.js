@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
-    //这个能帮我们复制文件到指定位置
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+//这个能帮我们复制文件到指定位置
 
 const htmlPlugin = new HtmlPlugin({
     template: './src/index.html', //指定源文件存放路径
@@ -9,11 +10,12 @@ const htmlPlugin = new HtmlPlugin({
 module.exports = {
     mode: 'development',
     entry: path.join(__dirname, './src/index.js'),
+    //插件html-webpack-plugin会自动帮咱们引入这个打包的JS
     output: {
         path: path.join(__dirname, './dist'),
-        filename: 'bundle.js'
+        filename: 'js/bundle.js'
     },
-    plugins: [htmlPlugin],
+    plugins: [htmlPlugin, new CleanWebpackPlugin()],
     devServer: {
         open: true,
         host: '127.0.0.1',
@@ -25,8 +27,14 @@ module.exports = {
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             // 处理 .less 文件的 loader
             { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] },
-            { test: /\.jgp|png|gif$/, use: 'url-loader?limit=22222222' }
+            { test: /\.jpg|png|gif$/, use: 'url-loader?limit=22222222&outputPath=images' }
 
         ]
+    },
+    devtool: 'nosources-source-map',
+    resolve: {
+        alias: {
+            '@': path.join(__dirname, './src/')
+        }
     }
 }
