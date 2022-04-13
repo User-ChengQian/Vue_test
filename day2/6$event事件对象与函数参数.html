@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <button @click="show">事件对象</button>
+        <button @click="shows(8888,$event)">事件中有多个参数,输出事件对象e</button>
+        <!-- 如果函数需要传递 变量 同时需要使用 事件对象  则可以使用$event表示原生的事件参数对象even -->
+    </div>
+
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '.box',
+            methods: {
+                show(e) {
+                    console.log(e);
+                },
+                shows(n, e) {
+                    console.log(n)
+                    console.log(e);
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

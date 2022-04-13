@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p v-if="flag">这是v-if条件渲染指令</p>
+        //v-if会进行自动创建与删除操作(影响性能,性能会变差),但是在实际开发中用if即可
+        <p v-show="flag">这是v-show条件渲染指令</p>
+        //v-show是进行dispaly属性的设置,设置元素的none和block
+    </div>
+
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '.box',
+            data: {
+                flag: false
+            }
+        })
+    </script>
+</body>
+
+</html>

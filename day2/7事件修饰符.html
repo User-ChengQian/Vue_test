@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .son {
+            width: 50px;
+            height: 50px;
+            margin: 25px auto;
+            background-color: purple;
+        }
+        
+        .father {
+            border: 1px solid transparent;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="father" @click="cli">
+            <div class="son" @click.stop="cl"></div>
+            <!-- stop可以阻止冒泡 -->
+        </div>
+        <a href="http://baidu.com" @click.prevent="linka">阻止默认跳转行为</a>
+        <!-- .preven事件修饰符可以阻止跳转相当于e.preventDefualt -->
+    </div>
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '.box',
+            methods: {
+                cli() {
+                    console.log('这是父级盒子');
+                },
+                cl() {
+                    console.log('这是子级盒子');
+                },
+                linka() {
+                    console.log('停止跳转');
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

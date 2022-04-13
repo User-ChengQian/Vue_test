@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="box">
+        <p>{{count}}</p>
+        <button v-on:click="add">+1</button>
+        <button @click="reduce">-1</button>
+        <!-- @为v-on:的简写 -->
+    </div>
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#box',
+            data: {
+                count: 555,
+            },
+            // 在methods中声明处理函数
+            methods: {
+                add: function() {
+                    vm.count++;
+                    //vm实例对象也可以用this表示(推荐)
+                },
+                //处理函数的简写
+                reduce() {
+                    this.count--
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

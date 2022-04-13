@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" v-model.number="n1"> +<input type="text" v-model.number="n2">= <span>{{n1+n2}}</span>
+        <hr>
+        <input type="text" v-model.triml="username">
+        <button @click="commit">提交用户名</button>
+        <hr>
+        <input type="text" name="" id="" v-model.lazy="text">
+        <hr>
+        <input type="text" name="" id="" v-model="text2">
+        <!-- 下拉列表的v-model -->
+        <select v-model="city">
+    <option value="0">请选择城市</option>
+    <option value="1">南昌</option>
+    <option value="2">赣州</option>
+    <option value="3">萍乡</option>
+</select>
+    </div>
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '.box',
+            data: {
+                count: 5,
+                n1: 1,
+                n2: 2,
+                username: 'zs',
+                text: 132144,
+                text2: 132144,
+                city: 2
+
+            },
+            methods: {
+                commit() {
+                    console.log(`用户名是:"${this.username}"`);
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
