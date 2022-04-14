@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p>{{msg|capi}}</p>
+    </div>
+    <!-- 这里必须进行管控才能使用vue的插值表达式,且msg必须定义 -->
+    <div class="box2">
+        <p>{{msg|capi}}</p>
+    </div>
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        // -------------------------这里是定义的全局过滤器
+        Vue.filter('capi', function(str) {
+            return str + '~~~~这里是全局过滤器'
+        });
+        //--------------------------这里控制.box区域,定义的是局部过滤器
+        const vm = new Vue({
+            el: '.box',
+            data: {
+                msg: 'hellow world',
+            },
+            filters: {
+                capi(str) {
+                    return str + '~~~~这是局部的过滤器'
+                }
+            },
+        });
+        //--------------------------这里控制.box2区域
+        const vm2 = new Vue({
+            el: '.box2',
+            msg: 'hellow world',
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 利用v-model双向绑定管控区域中的msg -->
+        <input type="text" v-model="msg">
+    </div>
+
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script src="../lib/jquery-3.6.0.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '.box',
+            data: {
+                msg: 'zs'
+            },
+            // 所有的侦听器,都应该被定义到watch节点下
+            watch: {
+                //侦听器本质是一个函数,把数据名作为方法名
+                //侦听器的参数,新值在前,旧值在后
+                msg(newVal) {
+                    if (newVal === '') return
+                    $.get('https://www.escook.cn/api/finduser/' + newVal, function(result) {
+                        console.log(result);
+                    })
+                },
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 过滤器可以通过{{}}插值表达式进行绑定 -->
+        <p>{{massge|capitalize}}</p>
+    </div>
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: ".box",
+            data: {
+                massge: "hello,这是私有过滤器",
+            },
+
+            filters: {
+                //过滤器其实就是一个函数,且接收前面的massge
+                capitalize(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

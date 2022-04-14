@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 利用v-model双向绑定管控区域中的msg -->
+        <input type="text" v-model="msg">
+    </div>
+
+
+    <script src="../lib/vue-2.6.12.js"></script>
+    <script src="../lib/jquery-3.6.0.js"></script>
+    <script src="../lib/axios.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '.box',
+            data: {
+                msg: 'zs'
+            },
+            //-------------------普通axios侦听请求
+            // watch: {
+            //     async msg(newVal) {
+            //         if (newVal === '') return
+            //         const {
+            //             data: res
+            //         } = await axios.get('https://www.escook.cn/api/finduser/' + newVal)
+            //         console.log(res);
+            //     }
+            // }
+            // ------方式二
+            // watch: {
+            //     msg(newVal, oldVal) {
+            //         if (newVal === '') return
+            //         axios.get('https://www.escook.cn/api/finduser/' + newVal).then(function(result) {
+            //             console.log(
+            //                 result
+            //             );
+            //         })
+            //     }
+            // }
+
+            //----------------如果想要初次加载完毕立即调用侦听器就必须使用immediate选项
+            watch: {
+                msg: {
+                    handler: async function(newVal) {
+                        if (newVal === '') return;
+                        const {
+                            data: res
+                        } = await axios.get('https://www.escook.cn/api/finduser/' + newVal)
+                        console.log(res.message);
+                    },
+                    //当页面初次渲染好后,就会立即触发当前的watch侦听器
+                    immediate: true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
