@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //some循环判断数组条件,并且返回布尔值
+        const arr = [{
+            id: 1,
+            name: "西瓜",
+            state: true
+        }, {
+            id: 2,
+            name: "哈密瓜",
+            state: true
+        }, {
+            id: 3,
+            name: "大冬瓜",
+            state: false
+        }, ]
+        const result = arr.every(item => item.state);
+        console.log(result);
+    </script>
+</body>
+
+</html>

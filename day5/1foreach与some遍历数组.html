@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // foreach循环遍历每一项,且不会停下来
+        const arr = ["ju", "lo", "pl", "o"]
+        arr.forEach((item, index) => {
+                if (item == "pl") {
+                    console.log(index);
+                }
+                console.log("进行foreach循环");
+            })
+            //some查找到指定项后可以利用retrun true跳出循环
+        arr.some((item, index) => {
+            if (item == "pl") {
+                console.log(index);
+                return true
+            }
+            console.log("进行some遍历");
+
+        })
+    </script>
+</body>
+
+</html>

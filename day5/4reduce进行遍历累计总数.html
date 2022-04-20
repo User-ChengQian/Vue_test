@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const arr = [{
+            id: 1,
+            name: "西瓜",
+            price: 20,
+            state: false,
+            count: 3,
+        }, {
+            id: 2,
+            name: "哈密瓜",
+            price: 30,
+            state: true,
+            count: 1,
+
+        }, {
+            id: 3,
+            name: "大冬瓜",
+            state: true,
+            price: 10,
+            count: 1,
+        }, ]
+        const result = arr.filter(item => item.state).reduce((sum, item) => {
+            return sum += item.price * item.count
+        }, 0)
+        console.log(result);
+        // 简写形式
+        //  const result = arr.filter(item => item.state).reduce((sum, item) => sum += item.price * item.count, 0)
+        // console.log(result);
+    </script>
+    </script>
+</body>
+
+</html>
